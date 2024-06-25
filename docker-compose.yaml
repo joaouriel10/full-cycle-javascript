@@ -35,6 +35,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     container_name: nginx
+    entrypoint: ["sh", "-c", "dockerize -wait tcp://app:3000 -timeout 20s nginx -g 'daemon off;'"]
     networks: 
       - node-network
     ports: 
