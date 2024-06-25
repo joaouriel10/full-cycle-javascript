@@ -10,6 +10,7 @@ services:
     volumes: 
       - ./node:/usr/src/app
     tty: true
+    entrypoint: ["sh", "-c", "dockerize -wait tcp://db:3306 -timeout 20s npm install && node index.js"]
     ports: 
       - "3000:3000"
     depends_on: 
